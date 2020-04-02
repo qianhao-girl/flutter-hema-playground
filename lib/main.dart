@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 void main() => runApp(MyApp());
 
@@ -7,7 +8,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: "HeMa",
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'HeMa Home Page'),
     );
   }
 }
@@ -44,16 +45,14 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  final List<Widget> _children = [
+    HomePage(), CategoriesPage(), HeMaLifePage(), CartPage(), MyAccountPage(),
+  ];
+  int _currentIndex = 0;
 
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
+  void _onTapTaped(int index){
+    setState((){
+      _currentIndex = index;
     });
   }
 
@@ -66,46 +65,87 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.display1,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      body: _children[_currentIndex],
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        onTap: _onTapTaped,
+        currentIndex:_currentIndex,
+        items: [
+          new BottomNavigationBarItem(icon: Icon(Icons.home), title:Text("主页")),
+          new BottomNavigationBarItem(icon:Icon(Icons.category), title: Text("分类")),
+          new BottomNavigationBarItem(icon:Icon(Icons.satellite), title: Text("盒区生活")),
+          new BottomNavigationBarItem(icon: Icon(Icons.shopping_cart),title:Text("购物车")),
+          new BottomNavigationBarItem(icon: Icon(Icons.account_circle),title: Text("我的")),
+        ],
+        unselectedItemColor: Colors.black26,
+        selectedItemColor: Colors.lightBlueAccent,
+      )// This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
+
+
+class HomePage extends StatefulWidget{
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage>{
+  @override
+  Widget build(BuildContext context){
+    return Center(child: Text("TODO:  HOMEPAGE"));
+  }
+}
+
+
+class CategoriesPage extends StatefulWidget{
+  @override
+  _CategoriesPageState createState() => _CategoriesPageState();
+}
+
+class _CategoriesPageState extends State<CategoriesPage> {
+  @override
+  Widget build(BuildContext context) {
+    return Center(child: Text("TODO:  CategoriesPage"));
+  }
+}
+
+
+class HeMaLifePage extends StatefulWidget{
+  @override
+  _HeMaLifePageState createState() => _HeMaLifePageState();
+}
+
+class _HeMaLifePageState extends State<HeMaLifePage>{
+  @override
+  Widget build(BuildContext context){
+    return Center(child: Text("TODO:  HeMaLifePage"));
+  }
+}
+
+
+class CartPage extends StatefulWidget{
+  @override
+  _CartPageState createState() => _CartPageState();
+}
+
+class _CartPageState extends State<CartPage>{
+  @override
+  Widget build(BuildContext context){
+    return Center(child: Text("TODO:  CartPage"));
+  }
+}
+
+
+class MyAccountPage extends StatefulWidget{
+  @override
+  _MyAccountPageState createState() => _MyAccountPageState();
+}
+
+class _MyAccountPageState extends State<MyAccountPage>{
+  @override
+  Widget build(BuildContext context){
+    return Center(child: Text("TODO:  MyAccount"));
+  }
+}
+
