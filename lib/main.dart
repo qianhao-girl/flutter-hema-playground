@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+//import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:mywinflutterapp/models/HomePageTopBar.dart';
+//import 'package:mywinflutterapp/widgets/CategoriesPage.dart';
 
 void main() => runApp(MyApp());
 
@@ -48,6 +50,10 @@ class _MyHomePageState extends State<MyHomePage> {
   final List<Widget> _children = [
     HomePage(), CategoriesPage(), HeMaLifePage(), CartPage(), MyAccountPage(),
   ];
+//  final HomePageTopBar _homePageTopBar = HomePageTopBar();
+  final List<Widget> _topBars = new List.generate(5, (int index) => index, growable: false).map(
+      (int value) => new PreferredSize(child: new HomePageTopBar(), preferredSize: Size.fromHeight(48))
+  ).toList();
   int _currentIndex = 0;
 
   void _onTapTaped(int index){
@@ -65,6 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
+      appBar:_topBars[_currentIndex],
       body: _children[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
@@ -96,6 +103,8 @@ class _HomePageState extends State<HomePage>{
     return Center(child: Text("TODO:  HOMEPAGE"));
   }
 }
+
+
 
 
 class CategoriesPage extends StatefulWidget{
