@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 //import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:mywinflutterapp/models/HomePageTopBar.dart';
-//import 'package:mywinflutterapp/widgets/CategoriesPage.dart';
+import 'package:mywinflutterapp/widgets/HomePageTopBar.dart';
+import 'package:mywinflutterapp/widgets/CategoriesPage.dart';
 
 void main() => runApp(MyApp());
 
@@ -31,10 +31,6 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
   // This class is the configuration for the state. It holds the values (in this
   // case the title) provided by the parent (in this case the App widget) and
   // used by the build method of the State. Fields in a Widget subclass are
@@ -54,6 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
   final List<Widget> _topBars = new List.generate(5, (int index) => index, growable: false).map(
       (int value) => new PreferredSize(child: new HomePageTopBar(), preferredSize: Size.fromHeight(48))
   ).toList();
+
   int _currentIndex = 0;
 
   void _onTapTaped(int index){
@@ -107,17 +104,17 @@ class _HomePageState extends State<HomePage>{
 
 
 
-class CategoriesPage extends StatefulWidget{
-  @override
-  _CategoriesPageState createState() => _CategoriesPageState();
-}
-
-class _CategoriesPageState extends State<CategoriesPage> {
-  @override
-  Widget build(BuildContext context) {
-    return Center(child: Text("TODO:  CategoriesPage"));
-  }
-}
+//class CategoriesPage extends StatefulWidget{
+//  @override
+//  _CategoriesPageState createState() => _CategoriesPageState();
+//}
+//
+//class _CategoriesPageState extends State<CategoriesPage> {
+//  @override
+//  Widget build(BuildContext context) {
+//    return Center(child: Text("TODO:  CategoriesPage"));
+//  }
+//}
 
 
 class HeMaLifePage extends StatefulWidget{
